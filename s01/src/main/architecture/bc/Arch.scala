@@ -82,7 +82,6 @@ object Arch {
   val ad : ArchitectureDescription = {
 
     ArchitectureDescription(
-
       components = MSZ (BuildingControlDemo_i_Instance_tcp_tempSensor, BuildingControlDemo_i_Instance_tcp_tempControl, BuildingControlDemo_i_Instance_tcp_fan, BuildingControlDemo_i_Instance_tcp_operatorInterface),
 
       connections = ISZ (Connection(from = BuildingControlDemo_i_Instance_tcp_tempSensor.currentTemp, to = BuildingControlDemo_i_Instance_tcp_tempControl.currentTemp),

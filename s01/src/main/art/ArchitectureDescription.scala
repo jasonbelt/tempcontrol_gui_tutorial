@@ -4,6 +4,7 @@ package art
 
 import org.sireum._
 
+
 @record class ArchitectureDescription(components: MSZ[Bridge],
                                       connections: ISZ[UConnection]) {
   @spec val allPorts: ISZ[UPort] = $

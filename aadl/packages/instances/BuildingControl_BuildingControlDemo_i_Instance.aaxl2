@@ -14,19 +14,19 @@
   <componentInstance name="tcp" category="process">
     <componentInstance name="tempSensor" category="thread">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
-        <property href="platform:/plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
         <ownedValue>
           <ownedValue xsi:type="aadl2:NamedValue">
-            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.0"/>
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.0"/>
           </ownedValue>
         </ownedValue>
         <propertyAssociation href="../BuildingControl.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
-        <property href="platform:/plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
         <ownedValue>
           <ownedValue xsi:type="aadl2:IntegerLiteral" value="1">
-            <unit href="platform:/plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.4"/>
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.4"/>
           </ownedValue>
         </ownedValue>
         <propertyAssociation href="../BuildingControl.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedPropertyAssociation.1"/>
@@ -43,19 +43,19 @@
     </componentInstance>
     <componentInstance name="tempControl" category="thread">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
-        <property href="platform:/plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
         <ownedValue>
           <ownedValue xsi:type="aadl2:NamedValue">
-            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.1"/>
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.1"/>
           </ownedValue>
         </ownedValue>
         <propertyAssociation href="../BuildingControl.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
-        <property href="platform:/plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
         <ownedValue>
           <ownedValue xsi:type="aadl2:IntegerLiteral" value="1">
-            <unit href="platform:/plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.4"/>
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.4"/>
           </ownedValue>
         </ownedValue>
         <propertyAssociation href="../BuildingControl.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedPropertyAssociation.1"/>
@@ -119,19 +119,19 @@
     </componentInstance>
     <componentInstance name="fan" category="thread">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
-        <property href="platform:/plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
         <ownedValue>
           <ownedValue xsi:type="aadl2:NamedValue">
-            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.1"/>
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.1"/>
           </ownedValue>
         </ownedValue>
         <propertyAssociation href="../BuildingControl.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
-        <property href="platform:/plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
         <ownedValue>
           <ownedValue xsi:type="aadl2:IntegerLiteral" value="1">
-            <unit href="platform:/plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.4"/>
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.4"/>
           </ownedValue>
         </ownedValue>
         <propertyAssociation href="../BuildingControl.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedPropertyAssociation.1"/>
@@ -186,19 +186,19 @@
     </componentInstance>
     <componentInstance name="operatorInterface" category="thread">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
-        <property href="platform:/plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
         <ownedValue>
           <ownedValue xsi:type="aadl2:NamedValue">
-            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.0"/>
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.0"/>
           </ownedValue>
         </ownedValue>
         <propertyAssociation href="../BuildingControl.aadl#/0/@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
-        <property href="platform:/plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
         <ownedValue>
           <ownedValue xsi:type="aadl2:IntegerLiteral" value="1">
-            <unit href="platform:/plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.4"/>
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.4"/>
           </ownedValue>
         </ownedValue>
         <propertyAssociation href="../BuildingControl.aadl#/0/@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.1"/>
