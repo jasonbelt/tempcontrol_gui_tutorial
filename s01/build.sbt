@@ -31,7 +31,7 @@
 //
 // sbt can be obtained from https://www.scala-sbt.org/download.html
 
-lazy val BuildingControlDemo_i_Instance = slangEmbeddedInspectorProject("BuildingControlDemo_i_Instance", ".")
+lazy val BuildingControlDemo_i_Instance = slangEmbeddedTestProject("BuildingControlDemo_i_Instance", ".")
 
 
 // refer to https://github.com/sireum/kekinian/blob/master/versions.properties

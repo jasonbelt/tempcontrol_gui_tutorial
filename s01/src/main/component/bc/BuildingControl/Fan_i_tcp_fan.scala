@@ -13,7 +13,7 @@ object Fan_i_tcp_fan {
   }
 
   def handlefanCmd(api: Fan_i_Operational_Api, value : FanCmd.Type): Unit = {
-    api.logInfo(s"received fanCmd $value")
+    api.logInfo(s"Received fanCmd $value")
 
     val ack = FanNative.fanCmdActuate(value)
 

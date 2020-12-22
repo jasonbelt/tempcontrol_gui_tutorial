@@ -15,7 +15,7 @@ object TempControl_i_tcp_tempControl {
   }
 
   def handlefanAck(api: TempControl_i_Operational_Api, value : FanAck.Type): Unit = {
-    api.logInfo(s"received fanAck $value")
+    api.logInfo(s"Received fanAck $value")
     if(value == FanAck.Error) {
       // mitigate
       api.logError("Actuation failed!")
@@ -25,7 +25,7 @@ object TempControl_i_tcp_tempControl {
   }
 
   def handlesetPoint(api: TempControl_i_Operational_Api, value : SetPoint_i): Unit = {
-    api.logInfo(s"received setPoint $value")
+    api.logInfo(s"Received setPoint $value")
     setPoint = SetPoint_i(
       low = Util.toFahrenheit(value.low),
       high = Util.toFahrenheit(value.high))
