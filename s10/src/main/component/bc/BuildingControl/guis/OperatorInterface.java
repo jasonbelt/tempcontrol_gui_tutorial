@@ -1,6 +1,6 @@
 package bc.BuildingControl.guis;
 
-import bc.BuildingControl.guis.SimpleTempDisplay;
+import bc.BuildingControl.exts.OperatorInterface_GUI;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
@@ -94,6 +94,6 @@ public class OperatorInterface {
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
-        simpleTempDisplay1 = new SimpleTempDisplay(80f, 50f, 100f);
+        OperatorInterface_GUI.createUIComponents(this);
     }
 }
