@@ -103,15 +103,15 @@ val slangEmbeddedTestSettings = Seq(
   libraryDependencies += "org.scalatest" %% "scalatest" % scalaTestVersion % "test",
 
   // Jetbrains UI Designer
-  libraryDependencies += "com.intellij" % "forms_rt" % formsRtVersion withSources() withJavadoc(),
+  libraryDependencies += "com.intellij" % "forms_rt" % formsRtVersion,
 )
 
 val slangEmbeddedInspectorSettings = Seq(
   Compile / unmanagedSourceDirectories += baseDirectory.value / "src/main/inspector",
 
-  libraryDependencies += "org.sireum" % "inspector-capabilities" % inspectorVersion withSources() withJavadoc(),
-  libraryDependencies += "org.sireum" % "inspector-gui" % inspectorVersion withSources() withJavadoc(),
-  libraryDependencies += "org.sireum" % "inspector-services-jvm" % inspectorVersion withSources() withJavadoc()
+  libraryDependencies += "org.sireum" % "inspector-capabilities" % inspectorVersion withSources(),
+  libraryDependencies += "org.sireum" % "inspector-gui" % inspectorVersion withSources(),
+  libraryDependencies += "org.sireum" % "inspector-services-jvm" % inspectorVersion withSources()
 )
 
 def standardProject(projId: String, projectDirectory: String) =

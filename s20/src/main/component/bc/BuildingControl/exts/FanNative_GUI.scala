@@ -1,15 +1,15 @@
 package bc.BuildingControl.exts
 
 import org.sireum._
-import bc.BuildingControl.guis.{TempSensorGui}
-import bc.BuildingControl.{TempUnit, Temperature_i, Util}
+import bc.BuildingControl._
+import bc.BuildingControl.guis.{FanGui}
 
 import java.util.concurrent.atomic.AtomicReference
 import javax.swing.{JComponent, JFrame, SwingUtilities, WindowConstants}
 
-object TempSensor_GUI {
+object FanNative_GUI {
 
-  private val sensedTemp: AtomicReference[Temperature_i] = new AtomicReference[Temperature_i](Util.initialTemp);
+  private val fanAck: AtomicReference[FanAck.Type] = new AtomicReference[FanAck.Type](FanAck.Ok)
 
   private var frame: Option[JFrame] = None()
 
@@ -18,22 +18,21 @@ object TempSensor_GUI {
   //SwingUtilities.invokeLater(() => createAndShow())
 
   def create(): JComponent = {
-    assert(SwingUtilities.isEventDispatchThread, "Not on EDT")
+    assert (SwingUtilities.isEventDispatchThread(), "Not on EDT")
 
-    val initialTemp = Util.initialTemp.degrees.value
-    val low = Util.initialSetPoint.low.degrees.value - 10f
-    val high = Util.initialSetPoint.high.degrees.value + 10f
+    import scala.jdk.CollectionConverters._
+    val values = new java.util.Vector[FanAck.Type](FanAck.elements.elements.asJavaCollection)
 
-    val tempSensor_GUI = new TempSensorGui(initialTemp, low, high)
+    val fanGui = new FanGui(values)
 
-    return tempSensor_GUI.$$$getRootComponent$$$()
+    return fanGui.$$$getRootComponent$$$()
   }
 
-  def createAndShow(): Unit = {
+  def createAndShow(): JFrame = {
     if(frame.isEmpty) {
       val p = create()
 
-      val f = new JFrame("TempSensor")
+      val f = new JFrame("Fan")
       f.setContentPane(p)
       f.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE)
       f.pack()
@@ -41,6 +40,8 @@ object TempSensor_GUI {
 
       frame = Some(f)
     }
+
+    return frame.get
   }
 
   /**
@@ -50,17 +51,22 @@ object TempSensor_GUI {
   def finalise(): Unit = {
     if(frame.nonEmpty) {
       SwingUtilities.invokeLater(() => {
-        frame.get.dispose()
+        frame.get.dispose
         frame = None()
       })
     }
   }
 
-  def setTemperature(v: F32): Unit = {
-    sensedTemp.set(Temperature_i(v, TempUnit.Fahrenheit))
+  def setFanAck(a: FanAck.Type): Unit = {
+    fanAck.set(a)
   }
 
-  def currentTempGet(): Temperature_i = {
-    return sensedTemp.get()
+  def getFanAck(): FanAck.Type = {
+    return fanAck.get()
+  }
+
+  def fanCmdActuate(cmd: FanCmd.Type): FanAck.Type = {
+    // ignore param
+    return getFanAck()
   }
 }

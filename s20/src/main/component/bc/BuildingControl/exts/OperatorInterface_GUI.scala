@@ -2,8 +2,9 @@ package bc.BuildingControl.exts
 
 import org.sireum._
 import bc.BuildingControl._
-import bc.BuildingControl.guis.{OperatorInterface}
+import bc.BuildingControl.guis.{OperatorInterface, SimpleTempDisplay}
 
+import java.awt.Window
 import java.util.concurrent.atomic.{AtomicBoolean, AtomicReference}
 import javax.swing.{JComponent, JFrame, JSpinner, SwingUtilities, WindowConstants}
 
@@ -13,6 +14,9 @@ object OperatorInterface_GUI {
 
   private var gui: OperatorInterface = _
   private var frame: Option[JFrame] = None()
+
+  val minAllowedTemp = Util.initialSetPoint.low.degrees.value - 10f
+  val maxAllowedTemp = Util.initialSetPoint.high.degrees.value + 10f
 
   // uncomment the following if it should be up to the component
   // to control its GUI (i.e. making it visible, disposing it)
@@ -46,6 +50,14 @@ object OperatorInterface_GUI {
     return gui.pnlOperatorInterface
   }
 
+  /** 'gui' will be null at this point so need to pass in the container class
+   * @param o the container class that is currently being instantiated
+   */
+  def createUIComponents(o: OperatorInterface): Unit ={
+    val initTemp = Util.initialTemp.degrees.value
+    o.simpleTempDisplay1 = new SimpleTempDisplay(initTemp, minAllowedTemp, maxAllowedTemp)
+  }
+
   def createAndShow(): JFrame = {
     if(frame.isEmpty) {
       val p = create()
@@ -66,21 +78,33 @@ object OperatorInterface_GUI {
    * This requires adding a finalise extension stub
    */
   def finalise(): Unit = {
+    /*
     if(frame.nonEmpty) {
       SwingUtilities.invokeLater(() => {
         frame.get.dispose()
         frame = None()
+
+        // dispose of the other frames
+        for(w <- Window.getWindows()) w.dispose()
       })
     }
+    */
   }
 
   def init(initialTemperature: Temperature_i,
            initialSetPoint: SetPoint_i): Unit = {
     SwingUtilities.invokeLater(() => {
-      gui.simpleTempDisplay1.setCurrentTemp(initialTemperature.degrees.value)
+      val initTemp = initialTemperature.degrees.value
 
+      val low = initialSetPoint.low.degrees.value
+      val high = initialSetPoint.high.degrees.value
+      // contract on datatype?
+      assert(low <= high, "low cannot be greater than high")
+
+      gui.simpleTempDisplay1.setCurrentTemp(initTemp)
+      gui.spnLowSetPoint.setValue(low)
+      gui.spnHighSetPoint.setValue(high)
     })
-
   }
 
   def setCurrentTemp(v: Temperature_i): Unit = {
@@ -112,6 +136,14 @@ object OperatorInterface_GUI {
     val low = F32(gui.spnLowSetPoint.getValue.toString).get
     val high = F32(gui.spnHighSetPoint.getValue.toString).get
 
+    if(low <= minAllowedTemp) {
+      gui.spnLowSetPoint.setValue(gui.spnLowSetPoint.getNextValue)
+      return
+    }
+    if(high >= maxAllowedTemp) {
+      gui.spnHighSetPoint.setValue(gui.spnHighSetPoint.getPreviousValue)
+      return
+    }
     val lowT = Temperature_i(low, TempUnit.Fahrenheit)
     val highT = Temperature_i(high, TempUnit.Fahrenheit)
 

@@ -15,7 +15,7 @@ object Fan_i_tcp_fan {
   def handlefanCmd(api: Fan_i_Operational_Api, value : FanCmd.Type): Unit = {
     api.logInfo(s"received fanCmd $value")
 
-    val ack = FanGUI.fanCmdActuate(value)
+    val ack = FanNative.fanCmdActuate(value)
 
     api.sendfanAck(ack)
 
@@ -32,13 +32,8 @@ object Fan_i_tcp_fan {
 }
 
 @ext(
-  "exts.FanNative_Ext"
+  //"ext.FanNative_Ext"
+  "exts.FanNative_GUI"
 ) object FanNative {
-  def fanCmdActuate(cmd: FanCmd.Type): FanAck.Type = $
-}
-
-@ext(
-  "exts.FanGUI_Ext"
-) object FanGUI {
   def fanCmdActuate(cmd: FanCmd.Type): FanAck.Type = $
 }
