@@ -7,7 +7,7 @@ import bc.BuildingControl.{TempUnit, Temperature_i, Util}
 import java.util.concurrent.atomic.AtomicReference
 import javax.swing.{JComponent, JFrame, SwingUtilities, WindowConstants}
 
-object TempSensor_GUI {
+object TempSensorNative_GUI {
 
   private val sensedTemp: AtomicReference[Temperature_i] = new AtomicReference[Temperature_i](Util.initialTemp);
 

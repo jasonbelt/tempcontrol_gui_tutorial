@@ -38,7 +38,7 @@ object Fan_i_tcp_fan {
 }
 
 @ext(
-  "exts.FanGUI_Ext"
+  "exts.FanNative_GUI"
 ) object FanGUI {
   def fanCmdActuate(cmd: FanCmd.Type): FanAck.Type = $
 }

@@ -1,7 +1,7 @@
 package bc.BuildingControl.guis;
 
 import bc.BuildingControl.FanAck;
-import bc.BuildingControl.exts.FanGUI_Ext;
+import bc.BuildingControl.exts.FanNative_GUI;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 
@@ -20,7 +20,7 @@ public class FanGui {
         cmbFanAck.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FanGUI_Ext.setFanAck(cmbFanAck.getItemAt(cmbFanAck.getSelectedIndex()));
+                FanNative_GUI.setFanAck(cmbFanAck.getItemAt(cmbFanAck.getSelectedIndex()));
             }
         });
     }

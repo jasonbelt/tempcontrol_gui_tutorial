@@ -33,7 +33,7 @@ object TempSensor_i_tcp_tempSensor {
 }
 
 @ext(
-   "exts.TempSensor_GUI"
+   "exts.TempSensorNative_GUI"
   //"exts.TempSensorNative_Random"
 ) object TempSensorNative {
   def currentTempGet(): Temperature_i = $

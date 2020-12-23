@@ -1,6 +1,6 @@
 package bc.BuildingControl.guis;
 
-import bc.BuildingControl.exts.TempSensor_GUI;
+import bc.BuildingControl.exts.TempSensorNative_GUI;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 
@@ -18,7 +18,7 @@ public class TempSensorGui {
             @Override
             public void stateChanged(ChangeEvent e) {
                 float v = Float.parseFloat(spnTemperature.getValue().toString());
-                TempSensor_GUI.setTemperature(v);
+                TempSensorNative_GUI.setTemperature(v);
             }
         });
     }

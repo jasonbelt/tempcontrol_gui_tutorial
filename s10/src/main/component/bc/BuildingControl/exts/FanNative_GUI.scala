@@ -7,7 +7,7 @@ import bc.BuildingControl.guis.{FanGui}
 import java.util.concurrent.atomic.AtomicReference
 import javax.swing.{JComponent, JFrame, SwingUtilities, WindowConstants}
 
-object FanGUI_Ext {
+object FanNative_GUI {
 
   private val fanAck: AtomicReference[FanAck.Type] = new AtomicReference[FanAck.Type](FanAck.Ok)
 
