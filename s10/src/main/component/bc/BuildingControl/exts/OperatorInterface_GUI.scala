@@ -82,9 +82,7 @@ object OperatorInterface_GUI {
            initialSetPoint: SetPoint_i): Unit = {
     SwingUtilities.invokeLater(() => {
       gui.simpleTempDisplay1.setCurrentTemp(initialTemperature.degrees.value)
-
     })
-
   }
 
   def setCurrentTemp(v: Temperature_i): Unit = {
