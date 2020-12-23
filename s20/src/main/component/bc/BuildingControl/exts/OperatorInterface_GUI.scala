@@ -6,7 +6,7 @@ import bc.BuildingControl.guis.{OperatorInterface, SimpleTempDisplay}
 
 import java.awt.Window
 import java.util.concurrent.atomic.{AtomicBoolean, AtomicReference}
-import javax.swing.{JComponent, JFrame, JSpinner, SwingUtilities, WindowConstants}
+import javax.swing.{JComponent, JFrame, JSpinner, SwingUtilities, SwingWorker, WindowConstants}
 
 object OperatorInterface_GUI {
   private val setPoint: AtomicReference[SetPoint_i] = new AtomicReference[SetPoint_i](Util.initialSetPoint)
@@ -41,8 +41,33 @@ object OperatorInterface_GUI {
     highSpinner.setEditor(new JSpinner.NumberEditor(gui.spnHighSetPoint, "0.0"))
     highSpinner.setValue(highSetpoint)
 
-    gui.btnClearAlarm.setEnabled(F)
-    gui.btnClearAlarm.addActionListener(e => alarmCleared.set(T))
+    gui.btnClearAlarm.setEnabled(T)
+    gui.btnClearAlarm.addActionListener(e => {
+
+      def isPrime(number: Z): B = {
+        for(i <- 2 until number) {
+          if(number % i == 0)
+            return F
+        }
+        return T
+      }
+
+      val number = 120000007
+      gui.lblAlarmMessage.setText(s"${number} is prime? ${isPrime(number)}")
+      /*
+      new SwingWorker[B, B] {
+        override def doInBackground(): B = {
+          return isPrime(number)
+        }
+
+        override def done(): Unit = {
+          gui.lblAlarmMessage.setText(s"${number} is prime? ${get()}")
+        }
+      }.execute()
+      */
+
+      alarmCleared.set(T)
+    })
 
     gui.simpleTempDisplay1.addListeners(lowSpinner, highSpinner)
     gui.simpleTempDisplay1.setCurrentTemp(initTemp)
