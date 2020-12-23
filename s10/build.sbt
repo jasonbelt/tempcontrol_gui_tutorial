@@ -103,7 +103,7 @@ val slangEmbeddedTestSettings = Seq(
   libraryDependencies += "org.scalatest" %% "scalatest" % scalaTestVersion % "test",
 
   // Jetbrains UI Designer
-  libraryDependencies += "com.intellij" % "forms_rt" % formsRtVersion withSources() withJavadoc(),
+  libraryDependencies += "com.intellij" % "forms_rt" % formsRtVersion,
 )
 
 val slangEmbeddedInspectorSettings = Seq(
