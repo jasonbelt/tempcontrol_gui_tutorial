@@ -29,7 +29,7 @@ object TempSensorNative_GUI {
     return tempSensor_GUI.$$$getRootComponent$$$()
   }
 
-  def createAndShow(): Unit = {
+  def createAndShow(): JFrame = {
     if(frame.isEmpty) {
       val p = create()
 
@@ -41,6 +41,7 @@ object TempSensorNative_GUI {
 
       frame = Some(f)
     }
+    return frame.get
   }
 
   /**
