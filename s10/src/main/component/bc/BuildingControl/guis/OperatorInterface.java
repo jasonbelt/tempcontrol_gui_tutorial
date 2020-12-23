@@ -1,6 +1,7 @@
 package bc.BuildingControl.guis;
 
 import bc.BuildingControl.exts.OperatorInterface_GUI;
+import bc.BuildingControl.guis.SimpleTempDisplay;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
