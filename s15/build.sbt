@@ -1,18 +1,6 @@
 // Example sbt build definitions -- the contents of this file will not be overwritten
 //
-// To open the following project in Sireum IVE select 'File > Open ...' and
-// navigate to the directory containing this file then click 'OK'.  To install
-// Sireum IVE see https://github.com/sireum/kekinian#installing
-//
-// To run the demo from within Sireum IVE:
-//   Right click src/main/architecture/bc/Demo.scala and choose "Run 'Demo'"
-//
-// To run the unit test cases from within Sireum IVE:
-//   Right click the src/test/bridge directory and choose "Run ScalaTests in bridge"
-//
-// NOTE: A ClassNotFoundException may be raised the first time you try to
-//       run the demo or unit tests.  If this occurs simply delete the directory
-//       named 'target' and retry
+// sbt can be obtained from https://www.scala-sbt.org/download.html
 //
 // To run the demo from the command line:
 //   sbt run
@@ -29,10 +17,22 @@
 //   sbt "set test in assembly := {}" assembly
 // on Windows
 //
-// sbt can be obtained from https://www.scala-sbt.org/download.html
+// Sireum IVE:
+//   In IVE select 'File > Open ...' and navigate to the directory containing
+//   this file then click 'OK'.  To install Sireum IVE see https://github.com/sireum/kekinian#installing
+//
+//   To run the demo from within Sireum IVE:
+//     Right click src/main/architecture/bc/Demo.scala and choose "Run 'Demo'"
+//
+//   To run the unit test cases from within Sireum IVE:
+//     Right click the src/test/bridge directory and choose "Run ScalaTests in bridge"
+//
+//   NOTE: A ClassNotFoundException may be raised the first time you try to
+//         run the demo or unit tests.  If this occurs simply delete the directory
+//         named 'target' and retry
 
-lazy val BuildingControlDemo_i_Instance = slangEmbeddedTestProject("BuildingControlDemo_i_Instance", ".")
 
+lazy val BuildingControlDemo_i_Instance = slangEmbeddedProject("BuildingControlDemo_i_Instance", ".")
 
 // refer to https://github.com/sireum/kekinian/blob/master/versions.properties
 // to get the most recent versions of the following dependencies
@@ -49,8 +49,7 @@ val sireumScalacVersion = "4.20201221.73c7e64"
 
 
 // refer to https://github.com/sireum/kekinian/releases to get the latest
-// Sireum Kekinian release
-// https://github.com/sireum/kekinian/tree/4.20201221.b159c6f
+// Sireum Kekinian release: https://github.com/sireum/kekinian/tree/4.20201221.b159c6f
 val kekinianVersion = "4.20201221.b159c6f"
 
 
@@ -84,6 +83,14 @@ val slangEmbeddedSettings = Seq(
   Compile / unmanagedSourceDirectories += baseDirectory.value / "src/main/nix",
   Compile / unmanagedSourceDirectories += baseDirectory.value / "src/main/seL4Nix",
 
+  Compile / unmanagedSourceDirectories in Test += baseDirectory.value / "src/test/bridge",
+  Compile / unmanagedSourceDirectories in Test += baseDirectory.value / "src/test/util",
+
+  libraryDependencies += "org.scalatest" %% "scalatest" % scalaTestVersion % "test",
+
+  // Jetbrains UI Designer
+  libraryDependencies += "com.intellij" % "forms_rt" % formsRtVersion,
+
   mainClass in (Compile, run) := Some("bc.Demo"),
 
   mainClass in assembly := Some("bc.Demo"),
@@ -96,36 +103,21 @@ val slangEmbeddedSettings = Seq(
   }
 )
 
-val slangEmbeddedTestSettings = Seq(
-  Compile / unmanagedSourceDirectories in Test += baseDirectory.value / "src/test/bridge",
-  Compile / unmanagedSourceDirectories in Test += baseDirectory.value / "src/test/util",
-
-  libraryDependencies += "org.scalatest" %% "scalatest" % scalaTestVersion % "test",
-
-  // Jetbrains UI Designer
-  libraryDependencies += "com.intellij" % "forms_rt" % formsRtVersion,
-)
-
 val slangEmbeddedInspectorSettings = Seq(
   Compile / unmanagedSourceDirectories += baseDirectory.value / "src/main/inspector",
 
-  libraryDependencies += "org.sireum" % "inspector-capabilities" % inspectorVersion withSources() withJavadoc(),
-  libraryDependencies += "org.sireum" % "inspector-gui" % inspectorVersion withSources() withJavadoc(),
-  libraryDependencies += "org.sireum" % "inspector-services-jvm" % inspectorVersion withSources() withJavadoc()
-)
+  libraryDependencies += "org.sireum" % "inspector-capabilities" % inspectorVersion withSources(),
+  libraryDependencies += "org.sireum" % "inspector-gui" % inspectorVersion withSources(),
+  libraryDependencies += "org.sireum" % "inspector-services-jvm" % inspectorVersion withSources(),
 
-def standardProject(projId: String, projectDirectory: String) =
-  Project(id = projId, base = file(projectDirectory)).settings(commonSettings)
+  mainClass in (Compile, run) := Some("bc.InspectorDemo"),
+)
 
 def slangEmbeddedProject(projId: String, projectDirectory: String) =
   Project(id = projId, base = file(projectDirectory)).
     settings(commonSettings ++ slangEmbeddedSettings)
 
-def slangEmbeddedTestProject(projId: String, projectDirectory: String) =
-  Project(id = projId, base = file(projectDirectory)).
-    settings(commonSettings ++ slangEmbeddedSettings ++ slangEmbeddedTestSettings)
-
 def slangEmbeddedInspectorProject(projId: String, projectDirectory: String) = {
   Project(id = projId, base = file(projectDirectory)).
-    settings(commonSettings ++ slangEmbeddedSettings ++ slangEmbeddedTestSettings ++ slangEmbeddedInspectorSettings)
+    settings(commonSettings ++ slangEmbeddedSettings ++ slangEmbeddedInspectorSettings)
 }
